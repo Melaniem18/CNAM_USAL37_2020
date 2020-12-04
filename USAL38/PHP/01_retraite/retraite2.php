@@ -38,6 +38,6 @@ elseif($age < $retraite) {
         echo "Il vous reste $difference2 années avant d'être à la retraite";}
 }
 else{
-    echo "La retraite c'est  cette année";
+    echo "La retraite c'est cette année";
 }
 
