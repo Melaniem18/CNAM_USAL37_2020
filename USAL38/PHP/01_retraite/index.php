@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 L'âge de la retraite est fixé à 55 ans
 
@@ -19,11 +19,16 @@ SINON
 
 $retraite = 55;
 
-$age = 60;
+$age = 55;
 
+$difference = $age - $retraite;
+$difference2 = $retraite - $age;
 
-if() {
+if ($age > $retraite) {
 
-    $difference = ???
     echo "vous êtes à la retraite depuis $difference années";
+} elseif ($age < $retraite) {
+    echo  "Il vous reste $difference2 années avant la retraite";
+} else {
+    echo "La retraite c'est cette année";
 }
