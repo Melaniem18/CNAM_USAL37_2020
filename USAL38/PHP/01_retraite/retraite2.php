@@ -27,7 +27,7 @@ $difference2 = $retraite - $age;
 
 
 if($age > $retraite) {
-    echo "Vous êtes à la retraite depuis $difference ans"; 
+    echo "Vous êtes à la retraite depuis $difference années"; 
 }
 elseif($age < $retraite) {
     if($age < 18 && $age >0){
@@ -35,7 +35,7 @@ elseif($age < $retraite) {
     }elseif($age < 0){
         echo "Vous n'êtes pas né";
     }else{
-        echo "Il vous reste $difference2 année avant d'être à la retraite";}
+        echo "Il vous reste $difference2 années avant d'être à la retraite";}
 }
 else{
     echo "La retraite c'est  cette année";
