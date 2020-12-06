@@ -30,6 +30,19 @@ trip_description mediumtext null,
 city_code int not null
 );
 
+create table steps
+(
+step_start datetime primary key,
+step_end datetime not null
+);
+
+create table themes
+(
+theme_code int primary key auto_increment,
+theme_name varchar(32) not null,
+theme_descrption text
+);
+
 -- contraintes de clés étrangères
 -- 2 sytaxes possibles
 /*
