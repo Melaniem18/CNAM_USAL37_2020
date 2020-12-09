@@ -1,6 +1,6 @@
 drop database if exists usal37_agence;
 
-create database usal37_agence default character set 'utf8';
+create database usal37_agence default character set 'utf8mb4' collate 'utf8mb4_unicode_ci';
 
 use usal37_agence;
 
@@ -12,9 +12,10 @@ create table countries
 
 create table cities
 (
-city_code int primary key auto_increment,
+city_code int auto_increment,
 city_name varchar(128) not null,
-country_code char(2) not null
+country_code char(2) not null,
+primary key (city_code)
 );
 
 create table trips
@@ -27,7 +28,8 @@ trip_end datetime not null,
 trip_price decimal(7,2) not null,
 trip_overview text not null,
 trip_description mediumtext null,
-city_code int not null
+city_code int not null,
+index(trip_title)
 );
 
 create table steps
@@ -102,6 +104,9 @@ values
 
 
 select * from cities;
+select * from countries;
+
+select * from trips where trip_start > '2021-05-01';
 
 select city_name, countries.country_code, country_name
 from cities
