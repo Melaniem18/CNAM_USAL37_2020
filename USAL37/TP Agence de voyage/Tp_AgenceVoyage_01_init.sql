@@ -42,7 +42,9 @@ create table trips_themes
 (
 trip_code int,
 theme_code int,
-primary key (trip_code, theme_code)
+primary key (trip_code, theme_code),
+foreign key (trip_code) references trips(trip_code),
+constraint fk_trips_themes foreign key (theme_code) references themes(theme_code)
 );
 
 create table services
@@ -52,12 +54,22 @@ service_name varchar(32) not null unique,
 service_description mediumtext null
 );
 
+create table trips_services
+(
+trip_code int,
+service_code int,
+primary key (trip_code, service_code)
+);
+
+alter table trips_services
+add foreign key (trip_code) references trips(trip_code),
+add constraint fk_trips_services foreign key (service_code) references services(service_code);
+
 -- contraintes de clés étrangères
 -- 2 sytaxes possibles
 /*
 alter table cities
-add 
-foreign key (country_code) references countries (country_code);
+add foreign key (country_code) references countries (country_code);
 */
 
 alter table cities
@@ -125,16 +137,49 @@ values
 (1, 3), /* 1-3*/
 (3, 2); /* 3-2*/
 
+insert into services
+(service_name)
+values
+('All inclusive'),
+('Coach sportif'),
+('Service d\'étage'),
+('SPA'),
+('Restaurant 4*');
+
+insert into trips_services
+(trip_code, service_code)
+values
+(1, 2),
+(1, 3),
+(2, 2),
+(2, 4),
+(3, 4),
+(4, 5);
 
 select * from cities;
 select * from countries;
 
 select * from trips where trip_start > '2021-05-01';
 
+select * from trips
+join trips_themes on trips.trip_code = trips_themes.trip_code
+join themes on themes.theme_code = trips_themes.theme_code;
+
+select * from trips
+join cities on trips.city_code = cities.city_code
+join countries on cities.country_code = countries.country_code;
+
+select * from trips
+join cities on trips.city_code = cities.city_code
+join countries on cities.country_code = countries.country_code
+join trips_themes on trips.trip_code = trips_themes.trip_code
+join themes on themes.theme_code = trips_themes.theme_code
+join trips_services on trips.trip_code = trips_services.trip_code
+join services on services.service_code = trips_services.service_code;
+
 select city_name, countries.country_code, country_name
 from cities
 join countries on cities.country_code = countries.country_code;
-
 
 select trip_title, trip_avaible, trip_start, trip_end, trip_price, trip_overview, trip_description, city_code
 from trips
