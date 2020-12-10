@@ -38,4 +38,4 @@ values
 (5),("Roger"), ("Lucas"), ("rogerlucas@mail.com"), ("+336 54 64 71 32"), (2020-02-11), (33);
 
 SELECT * FROM clients
-JOIN sales ON clients.com_code = sales.com_code
+JOIN sales ON clients.com_name = sales.com_name
