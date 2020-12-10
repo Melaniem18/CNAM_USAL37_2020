@@ -2,9 +2,9 @@ use usal37_agence;
 
 create table sales
 (
-com_code varchar(5) primary key,
+com_code char(5) primary key,
 com_name varchar(64) not null,
-com_password varchar(60) not null
+com_password char(60) not null
 );
 
 create table clients
@@ -13,30 +13,37 @@ client_id int primary key auto_increment,
 client_lastname varchar(32) not null,
 client_firstname varchar(32) not null,
 client_email varchar(128) not null,
-client_phone varchar(16) not null,
+client_phone char(16) not null,
 client_added date not null,
-client_password varchar(60) not null,
-com_code varchar(5) not null,
+client_password char(60) not null,
+com_code char(5) not null,
 foreign key (com_code) references sales(com_code)
 );
 
 insert into sales
-(com_code, com_name)
+(com_code, com_name, com_password)
 values
-(11), ("Dupond Jean"),
-(22), ("Martin Sophie"),
-(33), ("Richard Michel"),
-(44), ("Dubois Marie"),
-(55), ("Durand Thomas");
+('AA111', "Dupond Jean", "mdp"),
+('BB222', "Martin Sophie", "mdp"),
+('CC333', "Richard Michel", "mdp"),
+('DD444', "Dubois Marie", "mdp"), 
+('ED555', "Durand Thomas", "mdp");
 
 insert into clients
-(client_id, client_lastname, client_firstname, client_email, client_phone, client_added,com_code)
+(com_code, client_lastname, client_firstname, client_email, client_phone, client_added, client_password)
 values
-(1), ("Rivière"), ("Charles"), ("rivierecharles@mail.com"), ("+336 76 24 71 92"), (2020-09-22), ("Dupond Jean"),
-(2), ("Meunier"), ("Paulette"), ("meunierpaulette@mail.com"), ("+336 72 84 11 32"), (2019-11-19), ("Dubois Marie"),
-(3), ("Boulanger"), ("Océane"), ("boulangeroceane@mail.com"), ("+336 24 34 71 22"), (2018-10-11), (22), ("Martin Sophie"),
-(4), ("Chevalier"), ("Pierre"), ("chevalierpierre@mail.com"), ("+336 64 84 41 62"), (2020-12-10), (22), ("Martin Sophie"),
-(5), ("Roger"), ("Lucas"), ("rogerlucas@mail.com"), ("+336 54 64 71 32"), (2020-02-11), ("Durand Thomas");
+("AA111", "Rivière", "Charles", "rivierecharles@mail.com", "+33676247192", NOW(), "azerty"),
+("ED555", "Meunier", "Paulette", "meunierpaulette@mail.com", "+33672841132", NOW(), "azerty"),
+("DD444", "Boulanger", "Océane", "boulangeroceane@mail.com", "+33624347122", NOW(), "azerty"),
+("BB222", "Chevalier", "Pierre", "chevalierpierre@mail.com", "+33664844162", NOW(), "azerty"),
+("CC333", "Roger", "Lucas", "rogerlucas@mail.com", 			"+33654647132", NOW(), "azerty");
+
+select client_email, client_password from clients;
+select client_id, client_lastname, client_email, client_phone, client_added, com_code from clients;
+
+
 
 SELECT * FROM clients
-JOIN sales ON clients.com_name = sales.com_name
+join sales on clients.com_code = sales.com_code;
+
+
