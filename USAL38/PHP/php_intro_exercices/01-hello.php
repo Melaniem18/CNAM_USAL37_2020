@@ -1,18 +1,20 @@
 <?php
 
-$helloWorld = "Hello World !";
-
-echo $helloWorld;
-
-
-
-
-function hello(string $name): string
+function helloWorld()
 {
+    echo "Hello World !";
+}
+
+echo helloWorld();
+
+
+echo "\n";
+
+function hello($name)
+{
+
     return "Hello $name";
 }
-echo hello("Mike");
 
-if ($name = ) {
-    return "Nobody";
-}
+
+echo hello("Mike");

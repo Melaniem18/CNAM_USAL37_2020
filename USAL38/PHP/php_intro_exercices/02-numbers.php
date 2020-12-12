@@ -38,4 +38,17 @@ $g = 20;
 $h = 3;
 
 $getDiv = $g / $h;
+$getDiv = number_format($getDiv, 2);
+echo $getDiv;
+
+echo "\n";
+
+$i = 20;
+$k = 0;
+
+$getDiv = $i / $k;
+if ($getDiv == 0) {
+    return 0;
+}
+
 echo $getDiv;
