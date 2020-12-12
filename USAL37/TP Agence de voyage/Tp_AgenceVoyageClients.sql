@@ -42,7 +42,6 @@ select client_email, client_password from clients;
 select client_id, client_lastname, client_email, client_phone, client_added, com_code from clients;
 
 
-
 SELECT * FROM clients
 join sales on clients.com_code = sales.com_code;
 
