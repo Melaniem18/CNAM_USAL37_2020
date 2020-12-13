@@ -10,11 +10,9 @@ echo helloWorld();
 
 echo "\n";
 
-function hello($name)
-{
-
-    return "Hello $name";
+function hello(string $name)  
+{ 
+    return "Hello $name"; 
 }
-
 
 echo hello("Mike");

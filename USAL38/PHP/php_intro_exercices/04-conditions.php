@@ -1,18 +1,18 @@
 <?php
 
 $isMajor = 18;
-$age = 42;
 
-$isMajor12 = ($age <= $isMajor);
+if ($isMajor <= 18)
+{
+    return false;
+}
+if ($isMajor === 18)
+{
+    return true;
+}
+if ($isMajor >= 18)
+{
+    return true;
+}
 
-$isMajor18 = ($age === $isMajor);
-
-$isMajor42 = ($age >= $isMajor);
-
-echo $isMajor12;
-echo $isMajor18;
-echo $isMajor42;
-
-
-
-
+echo $isMajor;
