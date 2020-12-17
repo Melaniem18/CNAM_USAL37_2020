@@ -51,16 +51,16 @@ CREATE TABLE clients
 
 CREATE TABLE orders
 (
-order_quantity INT NOT NULL,
-order_paid INT NULL,
 trip_code INT,
 client_id INT,
+order_quantity INT NOT NULL,
+order_paid TINYINT(1) NULL,
 PRIMARY KEY(trip_code, client_id)
 );
 
 ALTER TABLE orders
-ADD FOREIGN KEY (trip_code) REFERENCES trips(trip_code),
-ADD FOREIGN KEY (client_id) REFERENCES clients(client_id);
+ADD CONSTRAINT fk_orders_trips FOREIGN KEY (trip_code) REFERENCES trips(trip_code),
+ADD CONSTRAINT fk_orders_clients FOREIGN KEY (client_id) REFERENCES clients(client_id);
 
 
 INSERT INTO clients 
@@ -72,6 +72,14 @@ VALUES
 ('PM654', 'Devoldère', 'Mickaël', 'd@d.fr', 	'0678963214', NOW(), '$2y$10$OpUTjAUsVuKtCstwAq5DeOVWPgofb2d2v.tsQuUCIgezmBqiv4fEi'), 
 ('YT023', 'Ben', 'Joe', 'e@e.fr', 			'0698741235', NOW(), '$2y$10$OpUTjAUsVuKtCstwAq5DeOVWPgofb2d2v.tsQuUCIgezmBqiv4fEi');
 
+INSERT INTO orders
+(trip_code, client_id, order_quantity, order_paid)
+VALUES
+(1, 5, 2, 1),
+(2, 5, 3, 0),
+(3, 1, 2, 1);
+
+
 SELECT client_email, client_password FROM clients;
 
 SELECT client_id, client_lastname, client_email, client_phone, client_added, com_code FROM clients;
@@ -80,5 +88,6 @@ SELECT * FROM clients
 JOIN sales ON clients.com_code = sales.com_code;
 
 SELECT * FROM trips
-JOIN clients ON trips.client_id = clients.client_id;
+JOIN orders ON trips.trip_code = orders.trip_code
+JOIN clients ON orders.client_id = clients.client_id;
 
