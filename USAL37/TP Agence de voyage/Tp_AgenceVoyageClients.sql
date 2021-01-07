@@ -7,7 +7,7 @@ com_name varchar(64) not null,
 com_password char(60) not null
 );
 
-create table clients
+create table clients 
 (
 client_id int primary key auto_increment,
 client_lastname varchar(32) not null,
