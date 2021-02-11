@@ -1,4 +1,4 @@
-USE usal37_tp_bank;
+use usal37_tp_bank;
 
 SELECT * FROM accounts;
 
@@ -12,7 +12,5 @@ UPDATE accounts SET account_balance=account_balance + 5 WHERE account_id=10;
 UPDATE accounts SET account_balance=account_balance - 2 WHERE account_id=11;
 UPDATE accounts SET account_balance=account_balance + 2 WHERE account_id=10;
 
-UPDATE accounts SET account_balance=account_balance - 2 WHERE account_id=11 AND account_balance >= 2;
-UPDATE accounts SET account_balance=account_balance + 2 WHERE account_id=10;
 
 
