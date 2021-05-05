@@ -1,0 +1,11 @@
+Exercice banque:
+Gestion des comptes courants des clients de la banque
+Un compte courant est caractérisé par un numéro, un propriétaire(nom), un solde, un découvret autorisé 500 euros
+
+Créer une application qui permet de créer un compte courant et d'effectuer des opérations de type dépôt et retrait ?
+Ajouter une fonction qui permet d'effectuer un virement vers un autre compte (concept de transmission par référence)
+
+compte -> numéro, propriétaire, solde, découvert
+=> dépôt + retrait
+
+  
