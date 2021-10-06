@@ -1,0 +1,14 @@
+{
+    "name": "mm/demo-composer",
+    "description": "mon projet",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "cocur/slugify": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cnam\\": "models"
+        }
+    }
+}
